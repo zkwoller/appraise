@@ -1,15 +1,26 @@
-import yayJpg from '../assets/yay.jpg';
-
-export default function HomePage() {
+import files from '@/assets';
+import { Button, ImageViewer } from "antd-mobile";
+import { useState } from "react";
+const DocsPage = () => {
+  const [visible, setVisible] = useState(false)
   return (
-    <div>
-      <h2>Yay! Welcome to umi!</h2>
-      <p>
-        <img src={yayJpg} width="388" />
-      </p>
-      <p>
-        To get started, edit <code>pages/index.tsx</code> and save to reload.
-      </p>
-    </div>
+    <>
+      <Button
+        onClick={() => {
+          setVisible(true)
+        }}
+      >
+        显示图片
+      </Button>
+      <ImageViewer.Multi
+        images={files}
+        visible={visible}
+        onClose={() => {
+          setVisible(false)
+        }}
+      />
+    </>
   );
-}
+};
+
+export default DocsPage;
